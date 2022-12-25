@@ -69,7 +69,7 @@ This folder contains the source code for the program, and a Qt Creator project f
 
 ## Build and run
 
-This project requires Qt 5.15.
+This project requires Qt 6.4 or above.
 
 **Before building the application, you must build the dictionary database using `parse-set.py` (for CEDICT + CC-CANTO) or `parse-individual.py` (for CFDICT/HanDeDict).** Read the README in `src/dictionaries/cedict` for instructions, then place the generated database, named `dict.db`, in `src/jyut-dict/resources/db/`.
 
