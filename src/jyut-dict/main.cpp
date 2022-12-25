@@ -25,23 +25,14 @@ int main(int argc, char *argv[])
     QThreadPool::globalInstance()->setMaxThreadCount(16);
 
     qRegisterMetaType<EntryCharactersOptions>("EntryCharactersOptions");
-    qRegisterMetaTypeStreamOperators<EntryCharactersOptions>("EntryCharactersOptions");
     qRegisterMetaType<EntryPhoneticOptions>("EntryPhoneticOptions");
-    qRegisterMetaTypeStreamOperators<EntryPhoneticOptions>("EntryPhoneticOptions");
     qRegisterMetaType<CantoneseOptions>("CantoneseOptions");
-    qRegisterMetaTypeStreamOperators<CantoneseOptions>("CantoneseOptions");
     qRegisterMetaType<MandarinOptions>("MandarinOptions");
-    qRegisterMetaTypeStreamOperators<MandarinOptions>("MandarinOptions");
     qRegisterMetaType<EntryColourPhoneticType>("EntryColourPhoneticType");
-    qRegisterMetaTypeStreamOperators<EntryColourPhoneticType>("EntryColourPhoneticType");
     qRegisterMetaType<SearchParameters>("SearchParameters");
-    qRegisterMetaTypeStreamOperators<SearchParameters>("SearchParameters");
     qRegisterMetaType<searchTermHistoryItem>();
     qRegisterMetaType<conflictingDictionaryMetadata>(
         "conflictingDictionaryNamesMetadata");
-
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
 #if defined(Q_OS_WIN)
     // This is kind of a horrible hack to get dark borders on Windows

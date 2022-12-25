@@ -4,16 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network sql svg
+QT       += core gui network qml sql svg texttospeech widgets
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
-
-equals(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 11) {
-   QT += texttospeech
-} else {
-  message(Qt $$QT_VERSION Text to Speech not supported)
-}
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = "Jyut Dictionary"
 TEMPLATE = app
@@ -22,7 +14,7 @@ VERSION = 1.22.02.07
 QMAKE_TARGET_COMPANY = "Aaron Tan"
 QMAKE_TARGET_PRODUCT = "Jyut Dictionary"
 QMAKE_TARGET_DESCRIPTION = "Jyut Dictionary"
-QMAKE_TARGET_COPYRIGHT = "Aaron Tan, 2019"
+QMAKE_TARGET_COPYRIGHT = "Aaron Tan, 2022"
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings

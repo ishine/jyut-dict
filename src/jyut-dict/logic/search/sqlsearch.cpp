@@ -2,7 +2,6 @@
 
 #include "logic/database/queryparseutils.h"
 #include "logic/utils/chineseutils.h"
-#include "logic/utils/utils.h"
 
 #include <QtConcurrent/QtConcurrent>
 
@@ -154,8 +153,8 @@ void SQLSearch::searchByUnique(const QString &simplified,
     }
 
     unsigned long long queryID = generateAndSetQueryID();
-    auto future = QtConcurrent::run(this,
-                                    &SQLSearch::searchByUniqueThread,
+    auto future = QtConcurrent::run(&SQLSearch::searchByUniqueThread,
+                                    this,
                                     simplified,
                                     traditional,
                                     jyutping,
@@ -183,7 +182,7 @@ void SQLSearch::runThread(void (SQLSearch::*threadFunction)(const QString &searc
         return;
     }
 
-    auto future = QtConcurrent::run(this, threadFunction, searchTerm, queryID);
+    auto future = QtConcurrent::run(threadFunction, this, searchTerm, queryID);
     _futures.append(future);
 }
 
@@ -580,7 +579,7 @@ void SQLSearch::searchPinyinThread(const QString &searchTerm,
 {
     // Replace "v" and "ü" with "u:" since "ü" is stored as "u:" in the table
     QString processedSearchTerm = searchTerm;
-    int location = processedSearchTerm.indexOf("v");
+    long long location = processedSearchTerm.indexOf("v");
     while (location != -1) {
         processedSearchTerm.remove(location, 1);
         processedSearchTerm.insert(location, "u:");
